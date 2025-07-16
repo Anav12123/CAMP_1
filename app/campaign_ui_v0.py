@@ -75,7 +75,7 @@ sender_config = json.loads(os.environ["GOOGLE_CREDS_JSON"])
 SENDERS = sender_config
 
 # Read leads directly from SHEET_NAME
-gc    = gspread.service_account_from_dict(SERVICE_ACCOUNT)
+gc    = gspread.service_account(SERVICE_ACCOUNT)
 lead_sheet = gc.open(SHEET_NAME).sheet1
 lead_df = pd.DataFrame(lead_sheet.get_all_records())
 
