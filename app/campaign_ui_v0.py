@@ -61,6 +61,14 @@ with st.sidebar:
     preview         = st.button("Preview the mail")
 
 
+def get_gspread_client():
+    service_account_info = json.loads(os.getenv("GCP_SERVICE_ACCOUNT_JSON", "{}"))
+    credentials = Credentials.from_service_account_info(service_account_info, scopes=[
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive"
+    ])
+    return gspread.authorize(credentials)
+
 SHEET_NAME = sheet_name_input
 SHEET_NAME2 = sheet_name_input2
 # Time Zone Setup
@@ -84,7 +92,7 @@ SENDERS = sender_config
 creds_dict = json.loads(creds_json)
 credentials = service_account.Credentials.from_service_account_info(creds_dict)
 # Read leads directly from SHEET_NAME
-gc = gspread.authorize(credentials)
+gc = gc = get_gspread_client()
 lead_sheet = gc.open(SHEET_NAME).sheet1
 lead_df = pd.DataFrame(lead_sheet.get_all_records())
 
