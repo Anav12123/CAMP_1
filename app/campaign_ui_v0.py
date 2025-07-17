@@ -241,7 +241,7 @@ def send_via_sendgrid(fr, to, subj, html):
 if preview:
     try:
         html_body = generate_html_from_text(body)
-        with open("templates\email_template_analytics.html") as f:
+        with open("templates/email_template_analytics.html") as f:
             tmpl = f.read()
         sample_html = tmpl.format(
             NAME="Test User",
