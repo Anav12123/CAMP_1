@@ -62,8 +62,12 @@ with st.sidebar:
 
 
 def get_gspread_client():
-    service_account_info = json.loads(os.getenv("GCP_SERVICE_ACCOUNT_JSON", "{}"))
-    credentials = Credentials.from_service_account_info(service_account_info, scopes=[
+    creds_json = os.environ.get("GOOGLE_CREDENTIALS_JSON")
+    if not creds_json:
+        raise ValueError("GOOGLE_CREDENTIALS_JSON not set in environment!")
+
+    creds_dict = json.loads(creds_json)
+    credentials = Credentials.from_service_account_info(creds_dict, scopes=[
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive"
     ])
@@ -92,7 +96,7 @@ SENDERS = sender_config
 creds_dict = json.loads(creds_json)
 credentials = Credentials.from_service_account_info(creds_dict)
 # Read leads directly from SHEET_NAME
-gc = gspread.authorize(credentials)
+gc = get_gspread_client()
 lead_sheet = gc.open(SHEET_NAME).sheet1
 lead_df = pd.DataFrame(lead_sheet.get_all_records())
 
