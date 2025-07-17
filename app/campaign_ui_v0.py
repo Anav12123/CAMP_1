@@ -81,6 +81,7 @@ creds = Credentials.from_service_account_info(
     json.loads(os.environ["GOOGLE_CREDS_JSON"]),
     scopes=SCOPES
 )
+print(creds["private_key"][:30])
 # Read leads directly from SHEET_NAME
 gc = gspread.authorize(creds)
 lead_sheet = gc.open(SHEET_NAME).sheet1
