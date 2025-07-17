@@ -305,7 +305,7 @@ def send_batch():
         sname = sender.get("name", "Team")
 
         try:
-            tmpl = open("templates\email_template_analytics.html").read()
+            tmpl = open("templates/email_template_analytics.html").read()
         except Exception as e:
             logger.error("Template load failed: %s", e)
             break
