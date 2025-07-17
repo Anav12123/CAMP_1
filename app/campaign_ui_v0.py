@@ -24,47 +24,7 @@ from sendgrid.helpers.mail import Mail
 BASE_TRACK_URL    = os.environ['BASE_TRACK_URL']
 SHEET_NAME        = os.environ['SHEET_NAME']
 SHEET_NAME2       = os.environ['SHEET_NAME2']
-SERVICE_ACCOUNT = {
-    "type": "service_account",
-    "project_id": "sheetsdata-464010",
-    "private_key_id": "2b14856e933a4d8703f52fe5b1f7174d1e0ce364",
-    "private_key": """-----BEGIN PRIVATE KEY-----
-MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDbv6lhBWi/rOQK
-OI+r49c5EVXJtQn22WQFbpCmyPSVfUvx524gIR/FGtXbm1gDZRGesdqxKL1haxOY
-DiLShJVdpjnXTI4SUGG9e1CIUEtgR03naOTSDODwKEfnixL/MJV/DASHBrAKTxAv
-oHfowBMkoTb/H2ZiHi2KhGZMkRJ9NfLsXWIwgxC1WUvQEpOBjjSywTKTLrk/Fid/
-vjdueRgk9iIjB4bBwKmwesMMNlSMk30v4ZdhIxO62dsJqb3ViFMNRGAYrm8zQebL
-zulyokF2LLV4+6wUFUtDL+ovrO1lNDafgLSeCN1HDj+0JfWE4qkr5EiZ1RZzt+lZ
-XKXEYNs3AgMBAAECggEABTRZXnRigjj7NP4Y8lZqQwOU7LrjxQZqDDI4V9LmRAzH
-JIVkLND2r9Q5C2328YGjygaRVOUk8xk2ShbPnqfIN9hs10YMuVn7rqFXNhtHZbza
-l1Kl1Lm8XBkVduJALW4TpFd/BfRTwrK+VzptjJl7+pVHjaxLNaNcVcMD/z09BbJw
-UlfxHnhpx1Jlfg1LZIVS0BnkU1Vq2bfEdOVpdk9xBrXJUdRyTj9dVZq5TxCDIa9M
-6cpZJYH22cgiCmsjPRTjEmkW97FJCR7z93yNnCJkx8U+HW7Lhd6jeaVk+nIUoESd
-dLDpEEK8RolsqnlXFuJljtHDAwj3eea5e9TV8ClAyQKBgQD5FeBsIO5pmM31m+MC
-+/pKvQtu8rNXwsOg5+wLVL3fMD2SIeN8M9uORWBEmdnIy0tYiLIOuXlYaKk1XY5K
-uIDUufEzf5IssNNdxvVQQENbhH9flYEP2ibeblATevnVZJKG2SZBU5ldLMTkl8XE
-L+wfLRGpLrBh68gCJ2E0pQeKXwKBgQDh2U2v7L9bNGAZvN22ipKRISm4+qi01fhj
-yw28UsIfHojIXTXw/Em6lOdhNNgoGraFSZluA9BEM1K8ESAYxxRjQVkoyR5Wup68
-S332p3GFn/pEYILkPxKSDxbEgeQmGf28bIsJExthNzn019GLbfPMuq5dpQmgkZR3
-zYOhVnWOKQKBgQDsIAf6mRFJu1hrn9aJKrOwDBv9lkfbRz/KlnEWoMPKA2Iq2MNd
-J4/YA/5pqethxQ5tJFCfUsYswDK/6yuLu/ItNwPnjOTWRt5oRMaix/jSlf1lcEXD
-8Erui2aPwQF7gHbDLLFuNkDpqhoQlawd+kv9lezrE96TRT/6grhMfrFyQwKBgCdr
-lXrCePgDYU68v3owH7sDLdQitDW0L0HD3Gbljwp9euR2GIcyke/mM6is35nIZ9lF
-6mjgc4aj6qn210Jb5TwZ2OUcjZYXxsMY7iiSO2dWcAllSxNpyuUBizjLbzYTTU2J
-KI9x7VJ/oDcTQHj0vRwb7Xlc6BxFrMNodLRBcg1ZAoGBAKBWGf7gJvVqHVx69cnY
-HpcPYuApYPTHtCdnadv4IiHtuuSBQ3moADYC3Jroi0Un+dMPvrNoZLsmvixikmsg
-RQze9RcLaeBJsjOvvCog6de4sTwg4ggS5c+T+cciC6dE8p/yyIStsap3ZUTbxir9
-H5cJHS15YR+s7I6iJIFecOyV
------END PRIVATE KEY-----""",
-    "client_email": "sheetsapibot@sheetsdata-464010.iam.gserviceaccount.com",
-    "client_id": "102013572646456216001",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sheetsapibot%40sheetsdata-464010.iam.gserviceaccount.com",
-    "universe_domain": "googleapis.com"
-}
-
+SERVICE_ACCOUNT = 
 STATE_FILE        = "config\campaign_state.json"
 SENDGRID_API_KEY  = os.environ['SENDGRID_API_KEY']
 OPEN_AI_KEY       = os.environ['OPEN_AI_KEY']
