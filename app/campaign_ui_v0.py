@@ -90,7 +90,7 @@ if not creds_json:
 
 SENDERS = sender_config
 creds_dict = json.loads(creds_json)
-credentials = service_account.Credentials.from_service_account_info(creds_dict)
+credentials = Credentials.from_service_account_info(creds_dict)
 # Read leads directly from SHEET_NAME
 gc = gc = get_gspread_client()
 lead_sheet = gc.open(SHEET_NAME).sheet1
