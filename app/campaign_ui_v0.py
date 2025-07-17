@@ -25,7 +25,7 @@ from google.oauth2.service_account import Credentials
 BASE_TRACK_URL    = os.environ['BASE_TRACK_URL']
 SHEET_NAME        = os.environ['SHEET_NAME']
 SHEET_NAME2       = os.environ['SHEET_NAME2']
-SERVICE_ACCOUNT   = "config/service-account.json"
+SERVICE_ACCOUNT   = os.environ['GOOGLE_CREDENTIALS_JSON']
 STATE_FILE        = "config/campaign_state.json"
 SENDGRID_API_KEY  = os.environ['SENDGRID_API_KEY']
 OPEN_AI_KEY       = os.environ['OPEN_AI_KEY']
@@ -92,7 +92,7 @@ SENDERS = sender_config
 creds_dict = json.loads(creds_json)
 credentials = Credentials.from_service_account_info(creds_dict)
 # Read leads directly from SHEET_NAME
-gc = gspread.service_account(filename=SERVICE_ACCOUNT)
+gc = gspread.authorize(credentials)
 lead_sheet = gc.open(SHEET_NAME).sheet1
 lead_df = pd.DataFrame(lead_sheet.get_all_records())
 
