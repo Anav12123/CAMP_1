@@ -25,8 +25,8 @@ from google.oauth2.service_account import Credentials
 BASE_TRACK_URL    = os.environ['BASE_TRACK_URL']
 SHEET_NAME        = os.environ['SHEET_NAME']
 SHEET_NAME2       = os.environ['SHEET_NAME2']
-SERVICE_ACCOUNT   = "config\service-account.json"
-STATE_FILE        = "config\campaign_state.json"
+SERVICE_ACCOUNT   = "config/service-account.json"
+STATE_FILE        = "config/campaign_state.json"
 SENDGRID_API_KEY  = os.environ['SENDGRID_API_KEY']
 OPEN_AI_KEY       = os.environ['OPEN_AI_KEY']
 OPEN_AI_ENDPOINT  = os.environ['OPEN_AI_ENDPOINT']
