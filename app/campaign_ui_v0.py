@@ -19,6 +19,7 @@ from apscheduler.triggers.interval import IntervalTrigger
 from pytracking.html import adapt_html
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+from google.oauth2.service_account import Credentials
 
 # === CONFIG & GLOBALS ===
 BASE_TRACK_URL    = os.environ['BASE_TRACK_URL']
