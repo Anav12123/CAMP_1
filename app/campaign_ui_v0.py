@@ -76,14 +76,15 @@ logger = logging.getLogger()
 sender_config = json.loads(os.environ["SENDER_CONFIG"])
 # load senders & clients
 
+creds_json = os.environ.get("GOOGLE_CREDENTIALS_JSON")
+if not creds_json:
+    raise ValueError("GOOGLE_CREDENTIALS_JSON not set in environment!")
+
 SENDERS = sender_config
-creds = Credentials.from_service_account_info(
-    json.loads(os.environ["GOOGLE_CREDS_JSON"]),
-    scopes=SCOPES
-)
-print(creds["private_key"][:30])
+creds_dict = json.loads(creds_json)
+credentials = service_account.Credentials.from_service_account_info(creds_dict)
 # Read leads directly from SHEET_NAME
-gc = gspread.authorize(creds)
+gc = gspread.authorize(credentials)
 lead_sheet = gc.open(SHEET_NAME).sheet1
 lead_df = pd.DataFrame(lead_sheet.get_all_records())
 
