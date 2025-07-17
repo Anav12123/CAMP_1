@@ -24,7 +24,7 @@ from sendgrid.helpers.mail import Mail
 BASE_TRACK_URL    = os.environ['BASE_TRACK_URL']
 SHEET_NAME        = os.environ['SHEET_NAME']
 SHEET_NAME2       = os.environ['SHEET_NAME2']
-SERVICE_ACCOUNT = 
+SERVICE_ACCOUNT   = json.loads(os.environ["GOOGLE_CREDS_JSON"])
 STATE_FILE        = "config\campaign_state.json"
 SENDGRID_API_KEY  = os.environ['SENDGRID_API_KEY']
 OPEN_AI_KEY       = os.environ['OPEN_AI_KEY']
@@ -36,7 +36,10 @@ client = AzureOpenAI(
 )
 
 html_body = None
-
+SCOPES = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive"
+]
 # Streamlit UI
 st.title("📧 Campaign Manager")
 
@@ -69,13 +72,16 @@ END   = dt_time(eh, em)
 # logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)-8s %(message)s", datefmt="%Y-%m-%dT%H:%M:%S%z")
 logger = logging.getLogger()
-sender_config = json.loads(os.environ["GOOGLE_CREDS_JSON"])
+sender_config = json.loads(os.environ["SENDER_CONFIG"])
 # load senders & clients
 
 SENDERS = sender_config
-
+creds = Credentials.from_service_account_info(
+    json.loads(os.environ["GOOGLE_CREDS_JSON"]),
+    scopes=SCOPES
+)
 # Read leads directly from SHEET_NAME
-gc = gspread.service_account_from_dict(SERVICE_ACCOUNT)
+gc = gspread.authorize(creds)
 lead_sheet = gc.open(SHEET_NAME).sheet1
 lead_df = pd.DataFrame(lead_sheet.get_all_records())
 
